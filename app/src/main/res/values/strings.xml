@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">ChatAppAndroid</string>
+    <string name="register_text">Registrarse</string>
+    <string name="last_name">Apellido</string>
+    <string name="first_name">Nombre</string>
+    <string name="phone">Telefono</string>
+    <string name="date_of_birth">Fecha de nacimiento</string>
+    <string name="bio">bio</string>
+    <string name="continue_text">Continuar</string>
+</resources>
