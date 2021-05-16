@@ -9,4 +9,6 @@
     <string name="continue_text">Continuar</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="meaning">Observa lo que estoy pensando</string>
+    <string name="time">16:52</string>
 </resources>
