@@ -2,6 +2,7 @@ package com.example.chatappandroid.Fragments;
 
 import androidx.lifecycle.ViewModelProvider;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -17,6 +18,7 @@ import android.view.ViewGroup;
 
 import com.amulyakhare.textdrawable.TextDrawable;
 import com.amulyakhare.textdrawable.util.ColorGenerator;
+import com.example.chatappandroid.ChatActivity;
 import com.example.chatappandroid.Common.Common;
 import com.example.chatappandroid.Model.UserModel;
 import com.example.chatappandroid.R;
@@ -75,7 +77,7 @@ public class PeopleFragment extends Fragment {
 
             @Override
             protected void onBindViewHolder(@NonNull UserViewHolder holder, int position, @NonNull UserModel model) {
-                if(!adapter.getRef(position).getKey().equals(FirebaseAuth.getInstance().getCurrentUser())){
+                if(!adapter.getRef(position).getKey().equals(FirebaseAuth.getInstance().getCurrentUser().getUid())){
                     //Hide yourself
                     ColorGenerator generator = ColorGenerator.MATERIAL;
                     int color = generator.getColor(FirebaseAuth.getInstance().getCurrentUser().getUid());
@@ -93,7 +95,9 @@ public class PeopleFragment extends Fragment {
 
                     //Event
                     holder.itemView.setOnClickListener(v ->{
-                        //Implement late;
+                        Common.chatUser = model;
+                        Common.chatUser.setUid(adapter.getRef(position).getKey());
+                        startActivity(new Intent(getContext(), ChatActivity.class));
                     });
                 }
                 else{
@@ -102,7 +106,6 @@ public class PeopleFragment extends Fragment {
                 }
             }
         };
-
         adapter.startListening();
         recycler_people.setAdapter(adapter);
     }
