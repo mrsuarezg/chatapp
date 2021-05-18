@@ -1,5 +1,13 @@
 package com.example.chatappandroid.Common;
 
+import android.content.ContentResolver;
+import android.database.Cursor;
+import android.net.Uri;
+import android.os.Build;
+import android.provider.OpenableColumns;
+
+import androidx.annotation.RequiresApi;
+
 import com.example.chatappandroid.Model.UserModel;
 
 import java.util.Random;
@@ -26,5 +34,25 @@ public class Common {
                 .append(" ")
                 .append(chatUser.getLastName())
                 .toString();
+    }
+
+    public static String getFileName(ContentResolver contentResolver, Uri fileUri) {
+        String result = null;
+        if(fileUri.getScheme().equals("content")){
+            Cursor cursor = contentResolver.query(fileUri,null,null,null,null);
+            try{
+                if(cursor != null && cursor.moveToFirst())
+                    result = cursor.getString(cursor.getColumnIndex(OpenableColumns.DISPLAY_NAME));
+            }finally {
+                cursor.close();
+            }
+        }
+        if(result ==  null){
+            result = fileUri.getPath();
+            int cut = result.lastIndexOf("/");
+            if(cut != -1)
+                return result.substring(cut+1);
+        }
+        return result;
     }
 }

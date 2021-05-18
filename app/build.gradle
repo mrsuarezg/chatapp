@@ -53,6 +53,7 @@ dependencies {
     implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.2.0'
     implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.2.0'
     implementation 'com.google.firebase:firebase-database:20.0.0'
+    implementation 'com.google.firebase:firebase-storage:20.0.0'
     annotationProcessor 'com.jakewharton:butterknife-compiler:10.2.3'
 
     //Dexter
@@ -74,4 +75,7 @@ dependencies {
 
     //Multiple Dex
     implementation 'com.android.support:multidex:1.0.3'
+
+    //Firebase Storage
+    implementation 'com.firebaseui:firebase-ui-storage:7.1.1'
 }
